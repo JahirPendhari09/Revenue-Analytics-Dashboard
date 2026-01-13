@@ -107,7 +107,7 @@ export function LabelEditDialog({
             <div className="flex items-center justify-center py-4">
               <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
             </div>
-          ) : usage && usage.totalLocations > 0 ? (
+          ) : usage && (usage.totalLocations ?? 0) > 0 ? (
             <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
               <div className="flex items-start gap-2">
                 <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5" />
@@ -123,7 +123,7 @@ export function LabelEditDialog({
                   </p>
                   
                   <div className="mt-3 space-y-2">
-                    {Object.entries(usage.usages).map(([pageName, locations]) => (
+                    {Object.entries(usage.usages ?? {}).map(([pageName, locations]) => (
                       <div key={pageName} className="text-sm">
                         <div className="font-medium text-amber-900">{pageName}:</div>
                         <ul className="ml-4 mt-1 space-y-1">
